@@ -7,7 +7,8 @@ const app = express();
 const PARAMETERS = ["ws", "t", "tcc_mean"]
 
 app.use(express.static(path.join(__dirname, 'public')))
-app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
 app.use(express.json());
 app.use(express.urlencoded());
    
@@ -15,6 +16,10 @@ app.use(express.urlencoded());
 app.get('/', (req, res) => {
     res.render('index');
 });
+
+app.get('/test', (req, res) => {
+    res.render('test');
+})
 
 app.post('/submit', async (req, res) => {
     const lat = req.body.lat;
