@@ -33,29 +33,32 @@ app.post('/submit', async (req, res) => {
     sunresults = await axios.get(DAYTIME);
     sunresponse = (sunresults.data.results.day_length/3600)-1.5
 
-    console.log(sunresponse);
+    // console.log(sunresponse);
 
-    let clouds = 0 
+    let windspeed = 0 
     for(let hrs = 0; hrs < 24; hrs++){
 
         let data = response[hrs].data
 
         for(let i = 0; i < data.length; i++){
 
-            if(data[i].name == "tcc_mean"){
+            if(data[i].name == "ws"){
             
-                clouds += data[i].values[0];
+                windspeed += data[i].values[0];
             
             }
         }
     }
 
-    avgCloud = clouds/24
+    windspeed = (Math.round((windspeed/24)*100))/100;
 
-    let hej = parseInt(area) * parseInt(effect) * sunresponse;
-    hej = Math.round(hej, 2);
+    const solarPrice = parseInt(area) * 3250;
 
-    res.send(hej.toString() + " kWh");
+
+    let solarEnergy = parseInt(area) * parseInt(effect) * sunresponse;
+    solarEnergy = Math.round(solarEnergy);
+
+    res.send("Energi med solceller idag: " + solarEnergy.toString() + " kWh " + solarPrice.toString() + " kr " + windspeed + " m/s");
 });
 
 // app.get('/main', (req, res) => {
