@@ -31,6 +31,10 @@ app.post('/submit', async (req, res) => {
 // app.get('/main', (req, res) => {
 //     res.sendFile(path.join(__dirname + 'public/main.html'));
 // });
+app.get('/test', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'test.html'));
+});
+
 
 app.listen(8080, () => {
     console.log("Server listening on port 8080.");
