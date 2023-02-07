@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function(){
     };
 
 
-
     ourData(function(){
         console.log(window.d);
         allData = window.d
