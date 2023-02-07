@@ -2,7 +2,7 @@ body {
 
     display: grid;
     grid-template-columns: 1fr minmax(20rem , 60rem) 1fr;
-    gap: 1rem;
+    gap: 2rem;
 
     background: url(inc/img/background.jpg);
     background-size: cover;
@@ -28,16 +28,19 @@ header {
     border-radius: 2rem;
 
     background-color: #00000075;
+    backdrop-filter: blur(10px);
 
     display: grid;
     grid-template-columns: 1fr , max-content;
-    grid-template-rows: repeat(auto-fill , max-content);
-    gap: 1rem;
+    grid-template-rows: repeat(8 , min-content);
+    gap: 1.5rem;
 }
 
 .mainTit {
     grid-column: 1;
     grid-row: 1;
+
+    height: min-content;
 }
 
 .mainDes {
@@ -48,11 +51,18 @@ header {
 .mapCon {
     grid-column: 2;
     grid-row: 1 / span 4;
+
+    justify-self: right;
+
+    width: 30rem;
+    height: 15rem;
 }
 
 .map {
     width: 100%;
     height: 100%;
+
+    border-radius: 1rem;
 }
 
 .searchbar {
@@ -70,13 +80,22 @@ header {
 
     border-radius: 3rem 0rem 0rem 3rem;
 
-    background-color: lightcoral;
+    background-color: #fff;
 }
 
 .searchButton {
     padding: 0.5rem 1.5rem 0.5rem 1rem;
 
     border-radius: 0rem 3rem 3rem 0rem;
+
+    background-color: #fff;
+}
+
+.searchButton:hover {
+
+    cursor: pointer;
+    background-color: #9d9d9d;
+
 }
 
 .extraForm {
@@ -85,7 +104,7 @@ header {
 
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 2rem;
 }
 
 .extraFormBody_1 {
@@ -128,7 +147,7 @@ header {
 
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    gap: 2rem;
 
 }
 
@@ -169,6 +188,13 @@ header {
 
     background-color: #FFCD29;
 
+}
+
+.Info_Con {
+    grid-column: 1 / span 2;
+
+    display: flex;
+    flex-direction: column;
 }
 
 footer {
