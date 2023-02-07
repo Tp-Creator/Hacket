@@ -1,14 +1,18 @@
 document.addEventListener("DOMContentLoaded", function(){
-
+    
     window.map = document.getElementById("map")
-
+    
+    
+    window.x = document.getElementById("demo");
+    
+    
     let data = document.getElementById("data");
-
-
+    
+    
     ourData(function(){
         console.log(window.d);
         allData = window.d
-
+        
         // data.innerHTML = window.d.timeSeries[7].parameters[14].values[0];
         for(i = 0; i < window.d.timeSeries.length; i++){
             for(j = 0; j < window.d.timeSeries[i].parameters.length; j++){
@@ -19,16 +23,31 @@ document.addEventListener("DOMContentLoaded", function(){
                 }
             }
         }        
-
+        
     })
+    
+    
+});
 
 
-})
 
-
-function getLatLong() {
-    console.log(map.innerHTML.getElementsByClassName("google-maps-link"))[0]
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
 }
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+}
+
+
+
+
+
+
 
 function search(searchWord) {
     map.src = 'https://maps.google.com/maps?q='+searchWord+'&t=k&z=9&ie=UTF8&iwloc=&output=embed'
