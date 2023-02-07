@@ -4,7 +4,7 @@ const path = require('path');
 
 const app = express();
 
-const PARAMETERS = ["ws", "t"]
+const PARAMETERS = ["ws", "t", "tcc_mean"]
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.set('view engine', 'ejs');
@@ -19,13 +19,43 @@ app.get('/', (req, res) => {
 app.post('/submit', async (req, res) => {
     const lat = req.body.lat;
     const lon = req.body.lon;
+    const area = req.body.area;
+    const effect = req.body.effect;
     const WEATHER_API = `https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/${lon}/lat/${lat}/data.json`;
+    const DAYTIME = `https://api.sunrise-sunset.org/json?lat=${lat}&lng=${lon}&date=2023-01-11&formatted=0`;
     const result = await axios.get(WEATHER_API);
     const response = []
     for(let d of result.data.timeSeries) {
         response.push({ date: d.validTime, data: d.parameters.filter(x => PARAMETERS.includes(x.name)) });
     }
-    res.send(response);
+
+
+    sunresults = await axios.get(DAYTIME);
+    sunresponse = (sunresults.data.results.day_length/3600)-1.5
+
+    console.log(sunresponse);
+
+    let clouds = 0 
+    for(let hrs = 0; hrs < 24; hrs++){
+
+        let data = response[hrs].data
+
+        for(let i = 0; i < data.length; i++){
+
+            if(data[i].name == "tcc_mean"){
+            
+                clouds += data[i].values[0];
+            
+            }
+        }
+    }
+
+    avgCloud = clouds/24
+
+    let hej = parseInt(area) * parseInt(effect) * sunresponse;
+    hej = Math.round(hej, 2);
+
+    res.send(hej.toString() + " kWh");
 });
 
 // app.get('/main', (req, res) => {
