@@ -1,8 +1,33 @@
-.mainCard {
-    padding: 2rem;
+body {
 
-    background-color: #00000025;
-    filter: blur(75%);
+    display: grid;
+    grid-template-columns: 1fr minmax(20rem , 60rem) 1fr;
+    gap: 1rem;
+
+    background: url(inc/img/background.jpg);
+    background-size: cover;
+    background-position: center;
+
+}
+
+header {
+
+    grid-column: 1 / span 3;
+    grid-row: 1;
+
+    padding: 1rem;
+
+}
+
+.mainCard {
+    grid-column: 2;
+    grid-row: 2;
+    padding: 2rem;
+    margin: 3rem 0rem 3rem 0rem;
+
+    border-radius: 2rem;
+
+    background-color: #00000075;
 
     display: grid;
     grid-template-columns: 1fr , max-content;
@@ -82,9 +107,12 @@
 
     padding: 0.75rem 1rem;
     border-radius: 3rem;
+
+    color: #000;
 }
 
 .budget {
+    flex-grow: 1;
 
     display: flex;
     flex-direction: column;
@@ -94,6 +122,7 @@
 .budgetCon {
 
     grid-column: 1 / span 2;
+    grid-row: 8;
 
     width: 100%;
 
@@ -128,5 +157,28 @@
 .bI_2 {
 
     border-radius: 0rem 3rem 3rem 0rem;
+
+}
+
+.search_Button {
+
+    margin-top: 1.5rem;
+    padding: 0.75rem 2rem;
+
+    border-radius: 3rem;
+
+    background-color: #FFCD29;
+
+}
+
+footer {
+
+    grid-column: 1 / span 3;
+    grid-row: 3;
+
+    padding: 1rem;
+    height: 10rem;
+
+    background-color: #d9d9d9;
 
 }
