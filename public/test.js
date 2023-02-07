@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(){
 
+    window.map = document.getElementById("map")
+
     let data = document.getElementById("data");
 
 
@@ -24,8 +26,12 @@ document.addEventListener("DOMContentLoaded", function(){
 })
 
 
+function getLatLong() {
+    console.log(map.innerHTML.getElementsByClassName("google-maps-link"))[0]
+}
+
 function search(searchWord) {
-    document.getElementById("map").src = 'https://maps.google.com/maps?q='+searchWord+'&t=k&z=9&ie=UTF8&iwloc=&output=embed'
+    map.src = 'https://maps.google.com/maps?q='+searchWord+'&t=k&z=9&ie=UTF8&iwloc=&output=embed'
 };
 
 
