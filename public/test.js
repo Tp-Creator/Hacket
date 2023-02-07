@@ -24,6 +24,7 @@ function showPosition(position) {
 
 
 
-function search(searchWord) {
-    map.src = 'https://maps.google.com/maps?q='+searchWord+'&t=k&z=9&ie=UTF8&iwloc=&output=embed'
+function search() {
+    searchterm = encodeURIComponent(document.getElementById("search").value)
+    map.src = 'https://maps.google.com/maps?q='+searchterm+'&t=k&z=9&ie=UTF8&iwloc=&output=embed'
 };
