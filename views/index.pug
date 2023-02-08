@@ -1,0 +1,47 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet' href='style/main.css')
+    link(rel='stylesheet' href='style/home.css')
+    title Document
+  body
+    header
+      h1 Name + logo
+    form.mainCard(action='')
+      // title
+      h1.mainTit.titleText Title
+      // description
+      p.mainDes.normaltext Description
+      // map
+      .mapCon
+        iframe.map(src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10078644.257991139!2d8.258674539808803!3d62.48253033221386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465cb2396d35f0f1%3A0x22b8eba28dad6f62!2sSverige!5e0!3m2!1ssv!2sse!4v1675762185508!5m2!1ssv!2sse' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade')
+      // title
+      h3.underTitle.titleText Find your location
+      // searchbar
+      .searchbar
+        input.searchfield(placeholder='Search for your location' type='text')
+        button.searchButton
+          img(src='style/inc/icons/search_Icon_v3.svg' alt='')
+      div
+        h3.underTitle.titleText Provide more information
+        p With more information we will be able to provide a more detailed prognose.
+      .extraForm
+        .extraFormBody_1
+          h5.titleText Installation site area
+          input.extraInput(type='text')
+        .extraFormBody_2
+          h5.titleText Installation site direction
+          input.extraInput(type='text')
+      h4 Budget
+      .budgetCon
+        .budget
+          h5.titleText Budget
+          .budgetInputCon
+            input.budgetInput.bI_1(placeholder='Min - Budget' type='text')
+            input.budgetInput.bI_2(placeholder='Max - Budget' type='text')
+        button.search_Button
+          p Search
+    footer
